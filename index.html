@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tester Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>S2S Event API Tester</h1>
+        <form id="apiForm">
+            <div class="form-group">
+                <label for="appToken">App Token:</label>
+                <input type="text" id="appToken" name="appToken" required>
+                <small>e.g., <code>4w565xzmb54d</code></small>
+            </div>
+            <div class="form-group">
+                <label for="eventToken">Event Token:</label>
+                <input type="text" id="eventToken" name="eventToken" required>
+                <small>e.g., <code>f0ob4r</code></small>
+            </div>
+            <div class="form-group">
+                <label for="deviceIdType">Device ID Type:</label>
+                <select id="deviceIdType" name="deviceIdType" required>
+                    <option value="idfa">IDFA (iOS)</option>
+                    <option value="gps_adid">GPS ADID (Android)</option>
+                    <option value="android_id">Raw Android ID</option>
+                    <option value="android_id_lower_md5">Hashed Android ID (Lowercase, MD5)</option>
+                    <option value="android_id_lower_sha1">Hashed Android ID (Lowercase, SHA1)</option>
+                    <option value="android_id_upper_md5">Hashed Android ID (Uppercase, MD5)</option>
+                    <option value="android_id_upper_sha1">Hashed Android ID (Uppercase, SHA1)</option>
+                    <option value="idfv">Raw IDFV (Uppercase, with hyphens)</option>
+                    <option value="imei">Raw IMEI (Without hyphens)</option>
+                    <option value="imei_lower_md5">Hashed IMEI (Lowercase, without hyphens)</option>
+                    <option value="meid">Raw MEID (Uppercase, without hyphens)</option>
+                    <option value="win_naid">Raw Windows network adapter ID (Lowercase, with hyphens)</option>
+                    <option value="win_hwid">Raw Windows Store hardware ID (Without hyphens)</option>
+                </select>
+                <small>e.g., <code>idfa</code></small>
+            </div>
+            <div class="form-group">
+                <label for="deviceIdValue">Device ID Value:</label>
+                <input type="text" id="deviceIdValue" name="deviceIdValue" required>
+                <small>e.g., <code>D2CADB5F-410F-4963-AC0C-2A78534BDF1E</code></small>
+            </div>
+            <div class="form-group">
+                <label for="adid">Adjust ID (optional):</label>
+                <input type="text" id="adid" name="adid">
+                <small>e.g., <code>18546f6171f67e29d1cb983322ad1329</code></small>
+            </div>
+            <div class="form-group">
+                <label for="ipAddress">IP Address (optional):</label>
+                <input type="text" id="ipAddress" name="ipAddress">
+                <small>e.g., <code>192.0.0.1</code></small>
+            </div>
+            <div class="form-group">
+                <label for="createdAtSelect">Created At Format:</label>
+                <select id="createdAtSelect" name="createdAtSelect" onchange="toggleCreatedAtFields()" required>
+                    <option value="created_at">ISO 8601 format</option>
+                    <option value="created_at_unix">UNIX timestamp</option>
+                </select>
+            </div>
+            <div class="form-group" id="createdAtGroup">
+                <label for="createdAt">Created At (ISO 8601 format, optional):</label>
+                <input type="text" id="createdAt" name="createdAt">
+                <small>e.g., <code>2023-01-02T15:04:05.000+0000</code></small>
+            </div>
+            <div class="form-group" id="createdAtUnixGroup" style="display:none;">
+                <label for="createdAtUnix">Created At UNIX Timestamp (optional):</label>
+                <input type="text" id="createdAtUnix" name="createdAtUnix">
+                <small>e.g., <code>1484085154</code></small>
+            </div>
+            <div class="form-group">
+                <label for="callbackParams">Callback Params (JSON, optional):</label>
+                <input type="text" id="callbackParams" name="callbackParams">
+                <small>e.g., <code>{"f0o":"bar","bar":"baz"}</code></small>
+            </div>
+            <div class="form-group">
+                <label for="partnerParams">Partner Params (JSON, optional):</label>
+                <input type="text" id="partnerParams" name="partnerParams">
+                <small>e.g., <code>{"f0o":"bar","bar":"baz"}</code></small>
+            </div>
+            <div class="form-group">
+                <label for="revenue">Revenue (optional):</label>
+                <input type="text" id="revenue" name="revenue">
+                <small>e.g., <code>123.4</code></small>
+            </div>
+            <div class="form-group">
+                <label for="currency">Currency (optional):</label>
+                <input type="text" id="currency" name="currency">
+                <small>e.g., <code>EUR</code></small>
+            </div>
+            <div class="form-group">
+                <label for="environment">Environment:</label>
+                <select id="environment" name="environment">
+                    <option value="production">Production</option>
+                    <option value="sandbox">Sandbox</option>
+                </select>
+                <small>e.g., <code>production</code></small>
+            </div>
+            <button type="button" onclick="generateCommands()">Generate Commands</button>
+        </form>
+
+        <div id="output">
+            <h2>Generated API URL:</h2>
+            <pre id="apiUrl">Example URL will appear here</pre>
+            <h2>Generated Curl Command:</h2>
+            <pre id="curlCommand">Example Curl command will appear here</pre>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
