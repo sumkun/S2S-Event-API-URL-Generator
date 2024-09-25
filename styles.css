@@ -14,56 +14,53 @@ body {
 /* Container */
 .container {
     background: #ffffff;
-    width: 90%;
-    max-width: 700px;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
     text-align: center;
     color: #1976d2;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
     font-weight: bold;
 }
 
 /* Form Group */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
-    color: #555;
+    color: #444;
+    font-size: 1rem;
 }
 
 .form-group input,
 .form-group select {
-    width: calc(100% - 20px); /* Adjusted to prevent touching the sides */
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Add additional padding for the input fields */
-.form-group input {
-    padding-right: 15px; /* Extra padding on the right side */
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Add this line */
 }
 
 .form-group input:focus,
@@ -76,8 +73,8 @@ h1 {
 .form-group small {
     display: block;
     color: #777;
-    margin-top: 5px;
-    font-size: 12px;
+    margin-top: 8px;
+    font-size: 0.85rem;
 }
 
 /* Button */
@@ -86,57 +83,106 @@ button {
     background-color: #1976d2;
     color: #fff;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
     box-shadow: 0 4px 6px rgba(25, 118, 210, 0.3);
 }
 
 button:hover {
     background-color: #1565c0;
-    transform: scale(1.03);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(25, 118, 210, 0.4);
 }
 
 /* Output Styling */
 #output {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 30px;
+    padding: 20px;
     background: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #apiUrl, #curlCommand {
     background: #e8eaf6;
-    padding: 10px;
-    border: 1px solid #c5cae9;
-    border-radius: 4px;
+    padding: 15px;
+    border: 2px solid #c5cae9;
+    border-radius: 6px;
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
+    font-size: 0.9rem;
+    overflow-x: auto;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    #apiUrl, #curlCommand {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
     .container {
         width: 95%;
         padding: 15px;
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.85rem;
+        padding: 8px;
     }
 
     button {
-        font-size: 14px;
+        font-size: 0.9rem;
+        padding: 10px;
     }
 
     #apiUrl, #curlCommand {
-        font-size: 12px;
+        font-size: 0.75rem;
+        padding: 10px;
     }
 }
